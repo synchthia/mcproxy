@@ -1,0 +1,39 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  MC_VERSION: 1.18
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: mcproxy
+    permissions:
+      packages: write
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: plain
+    steps:
+      - uses: actions/checkout@v2
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: "Build and push"
+        uses: docker/build-push-action@v2
+        with:
+          context: ${{ matrix.name }}
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}/${{ matrix.name }}:${{ env.MC_VERSION }}
