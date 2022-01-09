@@ -1,11 +1,11 @@
 FROM docker.io/alpine:latest AS download_velocity
 WORKDIR /velocity
 
-RUN apk add --no-cache curl
+RUN apk add --no-cache curl jq
+COPY utils/velocity.sh /velocity/
 
 # Download velocity
-RUN curl -o velocity.jar \
-    -fsSL https://versions.velocitypowered.com/download/latest.jar
+RUN sh /velocity/velocity.sh 3.1.1
 # ---
 # ---
 FROM docker.io/eclipse-temurin:17-alpine
