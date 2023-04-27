@@ -22,19 +22,26 @@ ENV PORT 25565
 COPY --from=download_velocity /velocity/velocity.jar /velocity/
 
 # Setup user
-RUN chmod u+s /bin/*
-RUN apk --no-cache add su-exec shadow yq
+RUN chmod u+s /bin/* && \
+    apk --no-cache add su-exec shadow yq
 
 # Copy Entry point
-COPY entrypoint.sh starter.sh autoconfig.sh /
+COPY entrypoint.sh launcher.sh autoconfig.sh /
 
 RUN addgroup -g 1000 app && \
     adduser app -u 1000 -S -G app
 
 # Copy basements...
-COPY plugins/ /app/plugins/
-COPY ./velocity.toml /app/
+COPY templates/ /app/templates/
+COPY server/ /app/server/
 
-WORKDIR /app
+# Create internal directories
+# Make symbolic link (for compatibility)
+RUN mkdir -p \
+    /app/server \
+    /app/plugins \
+    && ln -sfnv /app/plugins /app/server/plugins
+
+WORKDIR /app/server
 
 CMD ["sh", "/entrypoint.sh"]
