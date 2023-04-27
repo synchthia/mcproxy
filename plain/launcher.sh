@@ -18,7 +18,7 @@ _task_prepare() {
         # files (ex. velocity.toml)
         cd /app/templates
         for target in $(find . -mindepth 1 -maxdepth 1 -type f | sed -e 's/\.\///'); do
-            cp -Rpnv ${PWD}/${target} /app/server/${target}
+            cp -TRpnv ${PWD}/${target} /app/server/${target}
         done
     }
 
