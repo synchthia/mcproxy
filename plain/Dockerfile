@@ -38,7 +38,6 @@ COPY server/ /app/server/
 # Create internal directories
 # Make symbolic link (for compatibility)
 RUN mkdir -p \
-    /app/server \
     /app/plugins \
     && ln -sfnv /app/plugins /app/server/plugins
 
