@@ -42,5 +42,7 @@ rewriteYAML() {
 
 
 echo "=> Rewrite settings..."
-rewriteSettings "forwarding-secret" "\"${VELOCITY_SECRET}\""
+# Deprecated
+#rewriteSettings "forwarding-secret" "\"${VELOCITY_SECRET}\""
+echo -ne "${VELOCITY_SECRET}" > /app/forwarding.secret
 rewriteSettings "online-mode" "${ONLINE_MODE:-true}"
