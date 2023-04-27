@@ -8,6 +8,7 @@ on:
 env:
   MC_VERSION: 1.19.4
   VELOCITY_VERSION: 3.2.0-SNAPSHOT
+  WATERFALL_VERSION: 1.19
 
 jobs:
   build:
@@ -46,6 +47,7 @@ jobs:
           cache-to: type=gha,mode=max
           build-args: |
             VELOCITY_VERSION=${{ env.VELOCITY_VERSION }}
+            WATERFALL_VERSION=${{ env.WATERFALL_VERSION }}
           tags: |
             ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}/${{ matrix.name }}:latest
             ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}/${{ matrix.name }}:${{ env.MC_VERSION }}
