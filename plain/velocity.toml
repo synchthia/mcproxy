@@ -4,7 +4,7 @@ config-version = "1.0"
 bind = "0.0.0.0:25565"
 # What should be the MOTD? This gets displayed when the player adds your server to
 # their server list. Legacy color codes and JSON are accepted.
-motd = "&#09add3A Velocity Server"
+motd = "&#09add3A Server"
 # What should we display for the maximum number of players? (Velocity does not support a cap
 # on the number of players online.)
 show-max-players = 7000
