@@ -10,7 +10,7 @@ COPY utils/waterfall.sh /waterfall/
 RUN sh /waterfall/waterfall.sh ${WATERFALL_VERSION}
 # ---
 # ---
-FROM docker.io/eclipse-temurin:17-alpine
+FROM docker.io/eclipse-temurin:17
 EXPOSE 25565
 ENV LANG en_US.UTF-8
 
