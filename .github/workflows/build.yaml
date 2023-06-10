@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
 
 env:
-  MC_VERSION: 1.19.4
+  MC_VERSION: 1.20
   VELOCITY_VERSION: 3.2.0-SNAPSHOT
-  WATERFALL_VERSION: 1.19
+  WATERFALL_VERSION: 1.20
 
 jobs:
   build:
