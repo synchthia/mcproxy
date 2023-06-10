@@ -7,7 +7,7 @@ RUN apk add --no-cache curl jq
 COPY utils/waterfall.sh /waterfall/
 
 # Download waterfall
-RUN sh /waterfall/waterfall.sh ${WATERFALL_VERSION}
+RUN sh /waterfall/waterfall.sh "${WATERFALL_VERSION}"
 # ---
 # ---
 FROM docker.io/eclipse-temurin:17
