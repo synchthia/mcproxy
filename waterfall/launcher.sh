@@ -32,7 +32,7 @@ _task_start() {
     # Auto configuration
     echo "Running pre-configuration..."
     cd /app/server
-    sh /autoconfig.sh
+    bash /autoconfig.sh
 
     echo "Starting server..."
     exec java \
