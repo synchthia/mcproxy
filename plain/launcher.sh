@@ -22,7 +22,15 @@ _task_prepare() {
         done
     }
 
+    _fetch() {
+        if [ "$USE_PACKY" ]; then
+            packy fetch -s "velocity" -d /app/plugins
+        fi
+    }
+
     _template
+
+    _fetch
 }
 
 ## start - start server
