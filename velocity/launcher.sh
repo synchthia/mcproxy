@@ -24,7 +24,7 @@ _task_prepare() {
 
     _fetch() {
         if [ "$USE_PACKY" ]; then
-            packy fetch -s "velocity" -d /app/plugins
+            packy fetch -s "${PACKY_NAMESPACES:-velocity_global}" -d /app/plugins
         fi
     }
 
