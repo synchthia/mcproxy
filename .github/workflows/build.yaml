@@ -43,8 +43,8 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           context: ${{ matrix.name }}
           push: true
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          #cache-from: type=gha
+          #cache-to: type=gha,mode=max
           build-args: |
             VELOCITY_VERSION=${{ env.VELOCITY_VERSION }}
           tags: |
