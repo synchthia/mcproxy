@@ -12,9 +12,7 @@ COPY utils/velocity.sh /velocity/
 # Download tools
 WORKDIR /tmp
 RUN wget -O packy.tar.gz https://github.com/synchthia/packy/releases/latest/download/packy_${TARGETOS}_${TARGETARCH}.tar.gz && \
-    tar -xvzf ./packy.tar.gz && \
-    wget -O yq https://github.com/mikefarah/yq/releases/latest/download/yq_${TARGETOS}_${TARGETARCH} && \
-    chmod +x yq
+    tar -xvzf ./packy.tar.gz
 
 # Download velocity
 WORKDIR /velocity
@@ -25,14 +23,14 @@ RUN sh /velocity/velocity.sh ${VELOCITY_VERSION}
 FROM docker.io/eclipse-temurin:21
 EXPOSE 25565
 
-ENV LANG en_US.UTF-8
+ENV LANG=en_US.UTF-8
 
 # Config
-ENV ONLINE_MODE true
-ENV PORT 25565
+ENV ONLINE_MODE=true
+ENV PORT=25565
 
 # Install assets
-COPY --from=download_assets /tmp/packy /tmp/yq /usr/local/bin/
+COPY --from=download_assets /tmp/packy /usr/local/bin/
 
 # Install velocity
 COPY --from=download_assets /velocity/velocity.jar /velocity/
