@@ -33,5 +33,9 @@ echo "=> Rewrite settings..."
 echo -ne "${VELOCITY_SECRET}" > /app/server/forwarding.secret
 
 rewriteSettings "bind" "\"${BIND_ADDRESS:-0.0.0.0}:${PORT:-25565}\""
+rewriteSettings "motd" "\"${MOTD:-A Velocity Server}\""
 rewriteSettings "show-max-players" "${MAX_PLAYERS:-5000}"
 rewriteSettings "online-mode" "${ONLINE_MODE:-true}"
+rewriteSettings "prevent-client-proxy-connections" "${PREVENT_PROXY_CONNECTION:-true}"
+rewriteSettings "player-info-forwarding-mode" "\"${PLAYER_INFO_FORWARDDING_MODE:-modern}\""
+rewriteSettings "ping-passthrough" "\"${PING_PASSTHROUGH:-ALL}\""
